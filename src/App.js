@@ -1,9 +1,10 @@
 import React from 'react';
+import Appnavbar from "./components/AppNavbar/Appnavbar";
 
 function App() {
   return (
-    <div>
-      Hello
+    <div style={{backgroundColor: "blue"}}>
+      <Appnavbar/>
     </div>
   );
 }
