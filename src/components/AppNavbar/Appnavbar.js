@@ -1,14 +1,12 @@
 import React from "react";
 
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import {AppBar, Toolbar, Typography} from '@material-ui/core';
 
 const Appnavbar = () => {
 
     return(
-        <div style={{flexGrow: 1}}>
-        <AppBar position="absolute" style={{backgroundColor: "#4a4a4a"}}>
+        <div style={{flexGrow: 1, margin: 0}}>
+        <AppBar position="static" style={{backgroundColor: "#4a4a4a", margin: 0}}>
         <Toolbar>
           <Typography variant="h6" style={{flexGrow : 1, userSelect: "none"}}>
             Weather App
