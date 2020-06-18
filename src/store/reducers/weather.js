@@ -1,13 +1,32 @@
 import * as actionType from "../actions/actionTypes";
 
 const initialState = {
-  weather : {}
+  weather : {
+    weatherStatus: false,
+    location: "",
+    country: "",
+    temperature: null,
+    description: "",
+    precipitation : null,
+    date: ""
+  }
+
 }
 
 const addWeather = (state, action) => {
-    return {
-      ...state,
+  const { payload } = action;
+
+  return {
+    ...state,
+    weather: {
+      ...state.weather,
+      weatherStatus: true,
+      location: payload.city_name,
+      temperature: payload.data[0].high_temp,
+      description: payload.data[0].weather.description,
+      date: payload.data[0].datetime
     }
+  }
 }
 
 
