@@ -4,8 +4,9 @@ const initialState = {
   weather : {
     weatherStatus: false,
     location: "",
-    country: "",
-    temperature: null,
+    countryCode: "",
+    temperatureHigh: null,
+    temperatureLow: null,
     description: "",
     precipitation : null,
     date: ""
@@ -22,9 +23,11 @@ const addWeather = (state, action) => {
       ...state.weather,
       weatherStatus: true,
       location: payload.city_name,
-      temperature: payload.data[0].high_temp,
+      countryCode: payload.country_code,
+      temperatureHigh: payload.data[0].high_temp,
+      temperatureLow: payload.data[0].low_temp,
       description: payload.data[0].weather.description,
-      date: payload.data[0].datetime
+      date: payload.data[0].datetime,
     }
   }
 }
