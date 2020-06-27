@@ -1,12 +1,11 @@
 import * as actionType from "../actions/actionTypes";
-import { getNames } from "country-list";
 
 const initialState = {
   weatherStatus: false,
   location: "",
   countryCode: "",
   dataArr : [],
-  countryList: getNames()
+  error: null
 }
 
 const addWeather = (state, action) => {
@@ -35,11 +34,18 @@ const addWeather = (state, action) => {
     }
 }
 
+const error = (state, action) => {
 
+  return {
+    ...state,
+    error: "Invalid City or Country, please try again"
+    }
+}
 
 const reducer =(state = initialState, action) => {
     switch (action.type) {
         case actionType.ADD_WEATHER: return addWeather(state, action);
+        case actionType.ERROR: return error(state, action);
         default:
             return state;
     }

@@ -8,10 +8,13 @@ import classes from "./WeatherForecast.module.css"
 import { v4 as uuidv4 } from 'uuid'; 
 
 const WeatherForecast = (props) => {
-  const { weatherStatus, location, countryCode, dataArr } = props;
+  const { weatherStatus, location, countryCode, dataArr, error } = props;
 
   return (
         <div>
+          {error ? <Typography variant="h6" style={{display: "flex", justifyContent: "center", alignItems: "center", marginTop: 20, color: "red"}}>
+          {error}
+          </Typography> : null}
           <Typography variant="h6" style={{display: "flex", justifyContent: "center", alignItems: "center", marginTop: 20}}>
           {weatherStatus ? `${location}, ` + lookup.byIso(countryCode).country : null}
           </Typography> 
@@ -45,7 +48,8 @@ const mapStateToProps = state => {
     weatherStatus: state.weather.weatherStatus,
     location: state.weather.location,
     countryCode: state.weather.countryCode,
-    dataArr: state.weather.dataArr
+    dataArr: state.weather.dataArr,
+    error: state.weather.error
   };
 }
 

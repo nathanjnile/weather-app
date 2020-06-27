@@ -1,17 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { Typography, Button, TextField, Select, MenuItem, FormControl, InputLabel } from '@material-ui/core';
+import { Typography, Button, TextField } from '@material-ui/core';
 import * as actions from "../../../store/actions/index";
 import { withStyles } from '@material-ui/core/styles';
-import { getNames } from "country-list";
-import { v4 as uuidv4 } from 'uuid'; 
 
 const styles = theme => ({
-
-  // cssLabel: {
-  //   color : '#4a4a4a'
-  // },
 
   cssOutlinedInput: {
     '&$cssFocused $notchedOutline': {
@@ -31,18 +25,16 @@ const styles = theme => ({
 });
 
 const LocationInput = (props) => {
-    const {onWeatherAdded, classes, countryList} = props;
+    const {onWeatherAdded, classes} = props;
     const [weatherInput, setWeatherInput] = useState("");
     const [countryInput, setCountryInput] = useState("");
 
-    useEffect(() => {
-      console.log(getNames().length);
-    }, [])
-
     const submitForm = (event) => {
         event.preventDefault();
-        onWeatherAdded(weatherInput);
+        if (weatherInput === "" && countryInput === "") return
+        onWeatherAdded(weatherInput, countryInput);
         setWeatherInput("");
+        setCountryInput("");
     }
   
 
@@ -69,25 +61,22 @@ const LocationInput = (props) => {
               variant="outlined" 
               style={{width: "100%"}}
                 />
-              <FormControl variant="outlined" style={{width: "100%", marginTop: 20}}>
-              <InputLabel id="demo-simple-select-outlined-label">Country</InputLabel>
-              <Select
-                labelId="country-label"
-                id="country-label"
-                value={countryInput}
-                onChange={(event) => setCountryInput(event.target.value)}
-                label="Country">
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
-                {countryList.map((country) => (
-                <MenuItem key={uuidv4()} value={country}>{country}</MenuItem>
-                ))}
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
-              </Select>
-              </FormControl>
+              <TextField 
+              id="Country-field"
+              label="Country"
+              InputLabelProps={{ style: { color: "#4a4a4a"}}}
+              InputProps={{
+                classes: {
+                  root: classes.cssOutlinedInput,
+                  focused: classes.cssFocused,
+                  notchedOutline: classes.notchedOutline,
+                }}}
+              size="small"
+              value={countryInput}
+              onChange={(event) => setCountryInput(event.target.value)}
+              variant="outlined" 
+              style={{width: "100%", marginTop: 20}}
+                />
                 <div style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
                   <Button size="large" type="submit" style={{backgroundColor: "#4a4a4a", color:"#FFFFFF", marginTop: 20, textTransform: "none"}}>Search</Button>
                 </div>
@@ -103,13 +92,12 @@ LocationInput.propTypes = {
 
 const mapStateToProps = state => {
     return {
-      countryList: state.weather.countryList
     };
   }
   
   const mapDispatchToProps = dispatch => {
     return {
-        onWeatherAdded: (weatherInput) => dispatch(actions.addWeather(weatherInput)),
+        onWeatherAdded: (weatherInput, countryInput) => dispatch(actions.addWeather(weatherInput, countryInput)),
     }
   }
 
