@@ -1,6 +1,6 @@
 import React from 'react';
 import LocationInput from "./LocationInput/LocationInput";
-import WeatherForecast from "./WeatherForecast/WeatherForecast"
+import WeatherForecast from "./WeatherForecast/WeatherForecast";
 import { Container } from '@material-ui/core';
 
 const Mainbody = () => {

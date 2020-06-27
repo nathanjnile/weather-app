@@ -69,7 +69,7 @@ const LocationInput = (props) => {
               value={weatherInput}
               onChange={(event) => setWeatherInput(event.target.value)}
               variant="outlined" 
-              style={{width: 400}}
+              style={{width: "100%"}}
                 />
                 <div style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
                   <Button size="large" type="submit" style={{backgroundColor: "#4a4a4a", color:"#FFFFFF", marginTop: 20, textTransform: "none"}}>Search</Button>

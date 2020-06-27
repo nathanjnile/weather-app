@@ -9,7 +9,8 @@ const initialState = {
     temperatureLow: null,
     description: "",
     precipitation : null,
-    date: ""
+    date: "",
+    img: ""
   }
 
 }
@@ -28,6 +29,7 @@ const addWeather = (state, action) => {
       temperatureLow: payload.data[0].low_temp,
       description: payload.data[0].weather.description,
       date: payload.data[0].datetime,
+      img: payload.data[0].weather.icon
     }
   }
 }
