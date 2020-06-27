@@ -1,37 +1,38 @@
 import * as actionType from "../actions/actionTypes";
+import { getNames } from "country-list";
 
 const initialState = {
-  weather : {
-    weatherStatus: false,
-    location: "",
-    countryCode: "",
-    temperatureHigh: null,
-    temperatureLow: null,
-    description: "",
-    precipitation : null,
-    date: "",
-    img: ""
-  }
-
+  weatherStatus: false,
+  location: "",
+  countryCode: "",
+  dataArr : [],
+  countryList: getNames()
 }
 
 const addWeather = (state, action) => {
   const { payload } = action;
 
+  const weatherData = [];
+
+  for (let i = 0; i < 6; i++) {
+    weatherData.push({
+      temperatureHigh: payload.data[i].high_temp,
+      temperatureLow: payload.data[i].low_temp,
+      description: payload.data[i].weather.description,
+      date: payload.data[i].datetime,
+      img: payload.data[i].weather.icon
+    })
+  }
+
+  console.log(weatherData)
+
   return {
     ...state,
-    weather: {
-      ...state.weather,
-      weatherStatus: true,
-      location: payload.city_name,
-      countryCode: payload.country_code,
-      temperatureHigh: payload.data[0].high_temp,
-      temperatureLow: payload.data[0].low_temp,
-      description: payload.data[0].weather.description,
-      date: payload.data[0].datetime,
-      img: payload.data[0].weather.icon
+    weatherStatus: true,
+    location: payload.city_name,
+    countryCode: payload.country_code,
+    dataArr : weatherData
     }
-  }
 }
 
 

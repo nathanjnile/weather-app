@@ -4,7 +4,7 @@ import Mainbody from "./components/Mainbody/Mainbody";
 
 function App() {
   return (
-    <div style={{backgroundColor: "lightgrey", height: "100vh"}}>
+    <div style={{backgroundColor: "lightgrey", minHeight: "100vh"  ,height: "100%"}}>
       <Appnavbar/>
       <Mainbody/>
     </div>

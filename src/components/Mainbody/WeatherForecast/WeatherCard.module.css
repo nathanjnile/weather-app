@@ -5,10 +5,10 @@
     grid-column-gap: 1px;
     grid-row-gap: 1px;
     grid-gap: 4px;
-    grid-auto-rows : 50px;
+    grid-auto-rows : 40px;
     padding-top: 0;
     background-color: blue;
-    width: 300px
+    width: 250px
 }
 
 .dateTitle {
@@ -37,9 +37,9 @@
     padding : 8px;
     margin: 4px;
     grid-column: 2/3;
-    grid-row: 2/3;
+    grid-row: 1/2;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     color: black;
 }
@@ -48,9 +48,9 @@
     padding : 8px;
     margin: 4px;
     grid-column: 2/3;
-    grid-row: 3/4;
+    grid-row: 2/3;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     color: black;
 }
