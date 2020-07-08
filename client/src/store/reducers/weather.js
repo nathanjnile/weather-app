@@ -23,8 +23,6 @@ const addWeather = (state, action) => {
     })
   }
 
-  console.log(weatherData)
-
   return {
     ...state,
     weatherStatus: true,

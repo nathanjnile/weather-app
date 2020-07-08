@@ -33,7 +33,7 @@ const WeatherCard = (props) => {
                     </Typography> 
                 </div>
                 <div className={classes.description}>
-                    <Typography variant="h6">
+                    <Typography variant="subtitle1">
                     {description}
                     </Typography> 
                 </div>
