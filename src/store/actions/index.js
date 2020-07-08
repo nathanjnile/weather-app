@@ -1,2 +1,0 @@
-export { addWeather } from "./weather";
-
