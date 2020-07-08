@@ -3,6 +3,9 @@ import axios from "axios";
 
 export const addWeather = (weatherLocation, weatherCountry) => {
     return (dispatch) => {
+        dispatch({
+            type: actionTypes.LOADING
+        })
         axios.post("/api/weather/", {weatherCountry, weatherLocation})
         .then(response => {
             if(response.status !== 200) {

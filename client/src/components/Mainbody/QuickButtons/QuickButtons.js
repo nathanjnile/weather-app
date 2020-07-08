@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { Typography, Button, TextField } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import * as actions from "../../../store/actions/index";
-import { withStyles } from '@material-ui/core/styles';
 
 const QuickButtons = (props) => {
     const {onWeatherAdded} = props;

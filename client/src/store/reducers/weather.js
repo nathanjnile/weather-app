@@ -5,7 +5,8 @@ const initialState = {
   location: "",
   countryCode: "",
   dataArr : [],
-  error: null
+  error: null,
+  loading: false
 }
 
 const addWeather = (state, action) => {
@@ -28,7 +29,9 @@ const addWeather = (state, action) => {
     weatherStatus: true,
     location: payload.city_name,
     countryCode: payload.country_code,
-    dataArr : weatherData
+    dataArr : weatherData,
+    loading: false
+
     }
 }
 
@@ -36,7 +39,16 @@ const error = (state, action) => {
 
   return {
     ...state,
-    error: "Invalid City or Country, please try again"
+    error: "Invalid City or Country, please try again",
+    loading: false
+    }
+}
+
+const loading = (state, action) => {
+
+  return {
+    ...state,
+    loading: true
     }
 }
 
@@ -44,6 +56,7 @@ const reducer =(state = initialState, action) => {
     switch (action.type) {
         case actionType.ADD_WEATHER: return addWeather(state, action);
         case actionType.ERROR: return error(state, action);
+        case actionType.LOADING: return loading(state, action);
         default:
             return state;
     }
