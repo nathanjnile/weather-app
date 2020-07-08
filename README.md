@@ -2,7 +2,6 @@
 
 * A weather app built with react using express and node.js to handle an api call to weatherbit.io.
 * Produces a 6 day weather forecast displayed with Material UI components.
-* The Kanban board and goals section is built upon the react-beautiful-dnd library for drag and drop.
 * The weather data is data is fetched through an API call which will then populate the redux store.
 
 <a href="https://weather-reactjs-app.herokuapp.com/">View the App on Heroku</a>
